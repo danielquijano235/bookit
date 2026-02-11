@@ -1,20 +1,6 @@
-# 🍽️ BookIt - Sistema de Gestión de Reservas para Restaurantes
-
-## 📋 Descripción
-
-**BookIt** es una aplicación web completa para la gestión de reservas en restaurantes. Permite a los dueños y administradores de restaurantes gestionar reservas, clientes y mesas desde un panel de administración moderno e intuitivo.
-
-### ¿Qué hace BookIt?
-
-- **Landing Page atractiva**: Página pública con información del producto, ventajas, características y testimonios.
-- **Sistema de Login seguro**: Autenticación con contraseñas hasheadas y sesiones PHP.
-- **Dashboard completo**: Panel con métricas en tiempo real, gráfica de reservas semanal y lista de próximas reservas.
-- **Gestión de Reservas**: Crear, ver, actualizar y eliminar reservas con un modal interactivo.
-- **Base de Datos de Clientes**: Registro y consulta de clientes del restaurante.
 
 ---
-
-## 🛠️ Tecnologías Utilizadas
+ Tecnologías Utilizadas
 
 | Tecnología | Uso |
 |---|---|
@@ -107,8 +93,7 @@ bookit/
 ```
 
 ---
-
-## ⚙️ Requisitos Previos
+Requisitos
 
 Antes de instalar, asegúrate de tener:
 
@@ -122,7 +107,6 @@ Antes de instalar, asegúrate de tener:
 
 ---
 
-## 🚀 Instrucciones de Instalación
 
 ### PASO 1: Configurar la Base de Datos
 
@@ -243,19 +227,5 @@ Si ves errores de CORS en la consola del navegador:
 ### El dashboard muestra datos de ejemplo
 Si el backend no está conectado, el dashboard muestra datos estáticos de ejemplo. Esto es normal para poder ver la interfaz sin backend. Los datos reales se cargarán cuando el backend esté configurado correctamente.
 
-### npm install falla
-- Asegúrate de tener Node.js 16+ instalado
-- Prueba borrar `node_modules` y `package-lock.json` y volver a ejecutar `npm install`
 
----
 
-## 👨‍💻 Desarrollado por
-
-- **Daniel Quijano**
-
----
-
-## 📄 Licencia
-
-Este proyecto fue desarrollado con fines educativos.
-© 2024 BookIt. Todos los derechos reservados.
