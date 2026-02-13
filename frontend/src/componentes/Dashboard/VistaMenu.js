@@ -15,7 +15,7 @@ import React, { useState, useEffect } from 'react';
 const menuInicial = [
   {
     id: 1,
-    nombre: 'Carpaccio de Salmón',
+    nombre: 'Carpaccio de Salmon',
     descripcion: 'Finas láminas de salmón fresco con aceite de oliva, limón y alcaparras',
     precio: 45000,
     categoria: 'entradas',
@@ -27,7 +27,7 @@ const menuInicial = [
   },
   {
     id: 2,
-    nombre: 'Risotto de Champiñones',
+    nombre: 'Risoto de Champiñones',
     descripcion: 'Arroz arborio cremoso con champiñones silvestres y parmesano',
     precio: 38000,
     categoria: 'principales',
