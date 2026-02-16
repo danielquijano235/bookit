@@ -206,7 +206,12 @@ const VistaMesas = () => {
       {/* ====== BÚSQUEDA ====== */}
       <div className="mesas-barra-busqueda">
         <div className="mesas-busqueda-input">
-          <img src="https://img.icons8.com/ios-filled/16/999999/search--v1.png" alt="" width="16" height="16" />
+          <span className="mesas-busqueda-icono">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="9" r="7" stroke="#FDB022" strokeWidth="2" />
+              <line x1="14.4142" y1="14" x2="18" y2="17.5858" stroke="#FDB022" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </span>
           <input
             type="text"
             placeholder="Buscar por número o ubicación..."

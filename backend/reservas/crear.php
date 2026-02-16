@@ -1,4 +1,8 @@
 <?php
+// Mostrar errores de PHP para depuración temporal
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /**
  * ============================================
  * BOOKIT - Crear Nueva Reserva
@@ -24,6 +28,8 @@
 
 require_once '../configuracion/conexion.php';
 
+// Log temporal para depuración del método HTTP
+file_put_contents(__DIR__ . '/log_metodo.txt', date('c') . ' - Metodo: ' . $_SERVER['REQUEST_METHOD'] . "\n", FILE_APPEND);
 // Verificar sesión
 if (!isset($_SESSION['usuario_id'])) {
     http_response_code(401);
@@ -34,7 +40,10 @@ if (!isset($_SESSION['usuario_id'])) {
 // Solo aceptar POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode(["error" => "Método no permitido"]);
+    echo json_encode([
+        "error" => "Método no permitido",
+        "metodo_recibido" => $_SERVER['REQUEST_METHOD']
+    ]);
     exit();
 }
 
@@ -46,7 +55,7 @@ $cliente_id = $datos['cliente_id'] ?? null;
 $numero_personas = $datos['numero_personas'] ?? null;
 $fecha = $datos['fecha'] ?? null;
 $hora = $datos['hora'] ?? null;
-$mesa_id = $datos['mesa_id'] ?? null;
+$mesa_id = isset($datos['mesa_id']) && $datos['mesa_id'] !== '' ? $datos['mesa_id'] : null;
 $notas = $datos['notas_especiales'] ?? '';
 
 // Validar campos obligatorios
@@ -67,14 +76,24 @@ if ($numero_personas < 1) {
 // INSERTAR LA NUEVA RESERVA
 // El estado inicial siempre es 'pendiente'
 // ============================================
-$consulta = "
-    INSERT INTO reservas (cliente_id, usuario_id, numero_personas, fecha, hora, mesa_id, estado, notas_especiales)
-    VALUES (?, ?, ?, ?, ?, ?, 'pendiente', ?)
-";
 
-$stmt = mysqli_prepare($conexion, $consulta);
-// "iiissis" = int, int, int, string, string, int, string
-mysqli_stmt_bind_param($stmt, "iiissis", $cliente_id, $usuario_id, $numero_personas, $fecha, $hora, $mesa_id, $notas);
+if ($mesa_id === null) {
+    $consulta = "
+        INSERT INTO reservas (cliente_id, usuario_id, numero_personas, fecha, hora, mesa_id, estado, notas_especiales)
+        VALUES (?, ?, ?, ?, ?, NULL, 'pendiente', ?)
+    ";
+    $stmt = mysqli_prepare($conexion, $consulta);
+    // "iiisss" = int, int, int, string, string, string
+    mysqli_stmt_bind_param($stmt, "iiisss", $cliente_id, $usuario_id, $numero_personas, $fecha, $hora, $notas);
+} else {
+    $consulta = "
+        INSERT INTO reservas (cliente_id, usuario_id, numero_personas, fecha, hora, mesa_id, estado, notas_especiales)
+        VALUES (?, ?, ?, ?, ?, ?, 'pendiente', ?)
+    ";
+    $stmt = mysqli_prepare($conexion, $consulta);
+    // "iiissis" = int, int, int, string, string, int, string
+    mysqli_stmt_bind_param($stmt, "iiissis", $cliente_id, $usuario_id, $numero_personas, $fecha, $hora, $mesa_id, $notas);
+}
 
 if (mysqli_stmt_execute($stmt)) {
     // Obtener el ID auto-generado de la reserva

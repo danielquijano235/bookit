@@ -104,7 +104,10 @@ const BarraSuperior = ({ onNuevaReserva }) => {
       {/* Campo de búsqueda */}
       <div className="barra-busqueda">
         <span className="barra-busqueda-icono">
-          <img src="https://img.icons8.com/ios-filled/18/999999/search--v1.png" alt="buscar" width="18" height="18" />
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9" cy="9" r="7" stroke="#FDB022" strokeWidth="2" />
+            <line x1="14.4142" y1="14" x2="18" y2="17.5858" stroke="#FDB022" strokeWidth="2" strokeLinecap="round" />
+          </svg>
         </span>
         <input type="text" placeholder="Buscar clientes, reservas..." />
       </div>

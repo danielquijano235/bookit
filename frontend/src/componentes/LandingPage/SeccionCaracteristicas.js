@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 /**
  * ============================================
  * BOOKIT - Componente SeccionCaracteristicas
@@ -11,9 +12,6 @@
  *   - tabActiva: Índice de la pestaña seleccionada (0 por defecto)
  */
 
-import React, { useState } from 'react';
-
-// Datos de cada pestaña con su contenido
 const tabs = [
   {
     nombre: 'Gestión de Reservas',
@@ -45,7 +43,7 @@ const tabs = [
       'Recordatorios automáticos de reserva',
       'Confirmaciones por email y SMS',
       'Alertas de capacidad del restaurante',
-      'Notificaciones de cancelación instant\u00e1neas',
+      'Notificaciones de cancelación instantáneas',
     ],
   },
   {

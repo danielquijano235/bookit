@@ -39,7 +39,7 @@ const RutaProtegida = ({ children }) => {
 
   useEffect(() => {
     // Verificar si hay sesión activa en el servidor PHP
-    fetch('http://localhost/bookit/backend/autenticacion/verificar-sesion.php', {
+    fetch('http://localhost/bookit-api/autenticacion/verificar-sesion.php', {
       credentials: 'include', // Enviar cookies de sesión
     })
       .then(res => res.json())

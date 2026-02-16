@@ -36,7 +36,11 @@ const TarjetaMetrica = ({ titulo, numero, subtexto, badge, icono, colorFondo }) 
         className="metrica-icono"
         style={{ backgroundColor: `${colorFondo}20` }}
       >
-        {icono}
+        {icono.startsWith('http') ? (
+          <img src={icono} alt="" style={{ width: '24px', height: '24px' }} />
+        ) : (
+          icono
+        )}
       </div>
     </div>
   );

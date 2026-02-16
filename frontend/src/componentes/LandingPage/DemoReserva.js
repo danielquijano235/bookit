@@ -204,7 +204,7 @@ const DemoReserva = ({ visible, onCerrar }) => {
                 <img src="https://img.icons8.com/ios-filled/48/FDB022/conference-call.png" alt="" width="48" height="48" />
               </div>
               <h3>¿Cuántas personas?</h3>
-              <p className="demo-paso-descripcion">Selecciona el número de comensales</p>
+              <p className="demo-paso-descripcion">Selecciona el número de persnas</p>
 
               <div className="demo-personas-selector">
                 <button
@@ -258,7 +258,7 @@ const DemoReserva = ({ visible, onCerrar }) => {
           {paso === 2 && !confirmado && (
             <div className="demo-paso demo-paso-fecha">
               <h3>Elige una fecha</h3>
-              <p className="demo-paso-descripcion">Selecciona el día de tu reserva</p>
+              <p className="demo-paso-descripcion">Selecciona el día de l reserva</p>
 
               <div className="demo-calendario">
                 {/* Header del calendario */}
@@ -427,10 +427,7 @@ const DemoReserva = ({ visible, onCerrar }) => {
                 </div>
               </div>
 
-              <p className="demo-confirmacion-mensaje">
-                El cliente recibiría un email de confirmación automático con estos datos. 
-                Tú verías esta reserva en tu panel de BookIt al instante.
-              </p>
+             
 
               <div className="demo-confirmacion-acciones">
                 <button className="demo-btn-reiniciar" onClick={() => {
@@ -455,7 +452,7 @@ const DemoReserva = ({ visible, onCerrar }) => {
         {/* ====== FOOTER ====== */}
         <div className="demo-footer">
           <img src="https://img.icons8.com/ios-filled/14/666666/lock-2.png" alt="" width="14" height="14" />
-          <span>Demo interactiva · Los datos no se guardan</span>
+          <span>Esta demo es interactiva</span>
         </div>
       </div>
     </div>

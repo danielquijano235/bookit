@@ -12,6 +12,8 @@ import VistaReservas from '../componentes/Dashboard/VistaReservas';
 import VistaClientes from '../componentes/Dashboard/VistaClientes';
 import VistaMesas from '../componentes/Dashboard/VistaMesas';
 import VistaResenas from '../componentes/Dashboard/VistaResenas';
+import VistaMenu from '../componentes/Dashboard/VistaMenu';
+import VistaAnalisis from '../componentes/Dashboard/VistaAnalisis';
 import { NotificacionesProvider, useNotificaciones } from '../contextos/NotificacionesContext';
 import {
   obtenerMetricasHoy,
@@ -208,14 +210,14 @@ const PaginaDashboard = () => {
                   titulo="Reservas Hoy"
                   numero={metricasActuales.reservas_hoy}
                   badge="↑ +23% vs ayer"
-                  icono="📅"
+                  icono="https://img.icons8.com/ios-filled/20/FFFFFF/calendar--v1.png"
                   colorFondo="#4A90E2"
                 />
                 <TarjetaMetrica
                   titulo="Clientes Nuevos"
                   numero={metricasActuales.clientes_nuevos}
                   badge="↑ +12% vs ayer"
-                  icono="👥"
+                  icono="https://img.icons8.com/ios-filled/20/FFFFFF/conference-call.png"
                   colorFondo="#8B5CF6"
                 />
                 <TarjetaMetrica
@@ -223,7 +225,7 @@ const PaginaDashboard = () => {
                   numero={`${metricasActuales.ocupacion.porcentaje}%`}
                   subtexto={`${metricasActuales.ocupacion.ocupadas} de ${metricasActuales.ocupacion.total} mesas`}
                   badge="↑"
-                  icono="📊"
+                  icono="https://img.icons8.com/ios-filled/20/FFFFFF/statistics.png"
                   colorFondo="#10B981"
                 />
                 <TarjetaMetrica
@@ -231,7 +233,7 @@ const PaginaDashboard = () => {
                   numero={formatearMoneda(metricasActuales.ingresos_hoy)}
                   subtexto={`($${Math.round(metricasActuales.ingresos_hoy / 4000).toLocaleString()} USD)`}
                   badge="↑ +18%"
-                  icono="💰"
+                  icono="https://img.icons8.com/ios-filled/20/FFFFFF/money.png"
                   colorFondo="#FDB022"
                 />
               </div>
@@ -259,11 +261,19 @@ const PaginaDashboard = () => {
             <VistaMesas />
           )}
 
+          {seccionActiva === 'menu' && (
+            <VistaMenu />
+          )}
+
           {seccionActiva === 'resenas' && (
             <VistaResenas />
           )}
 
-          {!['inicio', 'reservas', 'clientes', 'mesas', 'resenas'].includes(seccionActiva) && (
+          {seccionActiva === 'analisis' && (
+            <VistaAnalisis metricas={metricas} datosGrafica={datosGrafica} />
+          )}
+
+          {!['inicio', 'reservas', 'clientes', 'mesas', 'menu', 'resenas', 'analisis'].includes(seccionActiva) && (
             <div className="seccion-en-construccion">
               <span style={{ fontSize: '3rem' }}>🚧</span>
               <h2>Sección en desarrollo</h2>

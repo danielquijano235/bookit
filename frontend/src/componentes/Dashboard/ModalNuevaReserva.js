@@ -62,7 +62,12 @@ const ModalNuevaReserva = ({ visible, onCerrar, onCrear, clientes = [], mesas = 
 
     setCargando(true);
     try {
-      await onCrear(formulario);
+      // Asegurar que mesa_id se envíe como null si está vacío
+      const datosReserva = { ...formulario };
+      if (datosReserva.mesa_id === '' || datosReserva.mesa_id === undefined) {
+        datosReserva.mesa_id = null;
+      }
+      await onCrear(datosReserva);
       // Limpiar formulario después de crear
       setFormulario({
         cliente_id: '',
@@ -113,34 +118,34 @@ const ModalNuevaReserva = ({ visible, onCerrar, onCrear, clientes = [], mesas = 
             </select>
           </div>
 
-          {/* Fecha de la reserva */}
-          <div className="campo-grupo">
-            <label className="campo-label">Fecha *</label>
-            <input
-              type="date"
-              name="fecha"
-              className="campo-input"
-              value={formulario.fecha}
-              onChange={manejarCambio}
-              min={new Date().toISOString().split('T')[0]} // No permitir fechas pasadas
-              required
-            />
-          </div>
-
-          {/* Hora de la reserva */}
-          <div className="campo-grupo">
-            <label className="campo-label">Hora *</label>
-            <select
-              name="hora"
-              value={formulario.hora}
-              onChange={manejarCambio}
-              required
-            >
-              <option value="">Seleccionar hora...</option>
-              {opcionesHora.map(hora => (
-                <option key={hora} value={hora}>{hora}</option>
-              ))}
-            </select>
+          {/* Fecha y hora alineadas */}
+          <div className="form-fecha-hora">
+            <div className="campo-grupo">
+              <label className="campo-label">Fecha *</label>
+              <input
+                type="date"
+                name="fecha"
+                className="campo-input"
+                value={formulario.fecha}
+                onChange={manejarCambio}
+                min={new Date().toISOString().split('T')[0]} // No permitir fechas pasadas
+                required
+              />
+            </div>
+            <div className="campo-grupo">
+              <label className="campo-label">Hora *</label>
+              <select
+                name="hora"
+                value={formulario.hora}
+                onChange={manejarCambio}
+                required
+              >
+                <option value="">Seleccionar hora...</option>
+                {opcionesHora.map(hora => (
+                  <option key={hora} value={hora}>{hora}</option>
+                ))}
+              </select>
+            </div>
           </div>
 
           {/* Número de personas */}

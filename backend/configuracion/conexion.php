@@ -16,10 +16,10 @@
 // DATOS DE CONEXIÓN A LA BASE DE DATOS
 // Modificar según tu configuración de XAMPP
 // ============================================
-$servidor = "localhost";     // Servidor de MySQL (por defecto localhost)
-$usuario = "root";           // Usuario de MySQL (por defecto root en XAMPP)
-$contrasena = "";            // Contraseña de MySQL (vacía por defecto en XAMPP)
-$base_datos = "bookit";      // Nombre de la base de datos
+$servidor = "localhost";
+$usuario = "root";
+$contrasena = "";       // Vacía por defecto en XAMPP
+$base_datos = "bookit";
 
 // ============================================
 // CREAR CONEXIÓN CON LA BASE DE DATOS
