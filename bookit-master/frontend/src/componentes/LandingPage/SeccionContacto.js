@@ -22,14 +22,14 @@ const infoContacto = [
   {
     icono: 'https://img.icons8.com/ios-filled/24/FDB022/marker.png',
     titulo: 'Ubicación',
-    linea1: 'Calle 85 #15-40, Oficina 302',
-    linea2: 'Bogotá, Colombia',
+    linea1: 'SENA-comercio',
+    linea2: 'RIONEGRO, ANTIOQUIA',
   },
   {
     icono: 'https://img.icons8.com/ios-filled/24/FDB022/phone.png',
     titulo: 'Teléfono',
-    linea1: '+57 (601) 555-0123',
-    linea2: '+57 300 123 4567',
+    linea1: '+57 305 435 2689',
+    linea2: '+57 322 219 5864',
   },
   {
     icono: 'https://img.icons8.com/ios-filled/24/FDB022/email.png',
@@ -37,12 +37,7 @@ const infoContacto = [
     linea1: 'contacto@bookit.com',
     linea2: 'soporte@bookit.com',
   },
-  {
-    icono: 'https://img.icons8.com/ios-filled/24/FDB022/clock--v1.png',
-    titulo: 'Horario de Atención',
-    linea1: 'Lunes a Viernes: 8:00 AM - 6:00 PM',
-    linea2: 'Sábados: 9:00 AM - 1:00 PM',
-  },
+
 ];
 
 const SeccionContacto = () => {
